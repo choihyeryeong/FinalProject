@@ -17,21 +17,20 @@ import android.widget.Toast;
 public class ListActivity extends Activity {
 
 
-    TextView mTvList;
-    Button mBtEdit;
-    Button mBtDelete;
-    Button mBtGoMain;
-    EditText mEtEdit_in;
-    EditText mEtEdit_do;
-    //EditText mEtEdit_ca;
-    EditText mEtDelete_in;
+    TextView mTvList; // 리스트를 띄워줄 텍스트뷰
+    Button mBtEdit; // 수정 버튼
+    Button mBtDelete; // 삭제 버튼
+    Button mBtGoMain; // 메인으로 버튼
+    EditText mEtEdit_in; // 수정할 번호를 입력받는 edit텍스트
+    EditText mEtEdit_do; // 수정할 내용을 입력받는 edit텍스트
+    EditText mEtDelete_in; // 삭제할 번호를 입력받는 edit텍스트
     String selItem=""; // DB에 저장 될 값(카테고리 값)
 
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_list);
 
-        final DBManager dbManager = new DBManager(getApplicationContext(), "List.db", null, 1);
+        final DBManager dbManager = new DBManager(getApplicationContext(), "List.db", null, 1); // DB를 선언해준다.
 
         mTvList =  (TextView)findViewById(R.id.tv_list);
         mBtEdit =  (Button)findViewById(R.id.bt_edit);
@@ -43,14 +42,14 @@ public class ListActivity extends Activity {
 
         Intent intent = getIntent(); //전달된 인텐트
         mTvList.setText(intent.getStringExtra("List")); //인텐트 내용물 get
-        mTvList.setVerticalScrollBarEnabled(true); //스크롤 만들기
+        mTvList.setVerticalScrollBarEnabled(true); // 리스트에 스크롤을 만든다.
         mTvList.setMovementMethod(new ScrollingMovementMethod());
 
-        mEtEdit_do.setVerticalScrollBarEnabled(true); //스크롤 만들기
+        mEtEdit_do.setVerticalScrollBarEnabled(true); // 수정할 내용을 입력받는 edit텍스트뷰에 스크롤을 만든다.
         mEtEdit_do.setMovementMethod(new ScrollingMovementMethod());
 
 
-        final Spinner category2 = (Spinner) findViewById(R.id.sp_categoty2); // 카테고리
+        final Spinner category2 = (Spinner) findViewById(R.id.sp_categoty2); // 카테고리를 spinner로 만들어준다.
         ArrayAdapter caAdapter2 =  ArrayAdapter.createFromResource(this,R.array.category,android.R.layout.simple_spinner_dropdown_item);
         caAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         category2.setAdapter(caAdapter2);

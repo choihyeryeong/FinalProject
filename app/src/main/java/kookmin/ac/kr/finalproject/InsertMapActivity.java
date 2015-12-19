@@ -28,12 +28,12 @@ import java.util.Locale;
 
 public class InsertMapActivity extends AppCompatActivity {
 
-    int check = 0;
-    String save_address;
-    TextView logView;
-    Button mBtTodayInsert;
-    Button mBtBack;
-    private GoogleMap map;
+    int check = 0; // 마크가 여러번 찍히지 않게 체크해주는 변수
+    String save_address; // insertActivity로 전달할 한글주소
+    TextView logView; // 현재 위치를 띄워줄 텍스트뷰
+    Button mBtTodayInsert; // 한 일 입력 버튼
+    Button mBtBack; // 메인으로 돌아가기 버튼
+    private GoogleMap map; // 구글맵
 
 
     @Override
@@ -48,8 +48,8 @@ public class InsertMapActivity extends AppCompatActivity {
         mBtTodayInsert.setOnClickListener(new View.OnClickListener() { // 한 일 입력 버튼 클릭
             @Override
             public void onClick(View v) {
-                Intent input_intent = new Intent(InsertMapActivity.this, InsertActivity.class);
-                input_intent.putExtra("address", save_address); //인텐트에 데이터 심어 보내기
+                Intent input_intent = new Intent(InsertMapActivity.this, InsertActivity.class); // InsertActivity로 이동한다.
+                input_intent.putExtra("address", save_address); // 현재주소를 InsertActivity로 전달한다.
                 startActivity(input_intent);
 
             }
@@ -57,7 +57,7 @@ public class InsertMapActivity extends AppCompatActivity {
 
         mBtBack.setOnClickListener(new View.OnClickListener() { // 돌아가기 버튼 클릭
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { // InsertMapActivity로 이동한다.
                 finish();
             }
         });
@@ -84,7 +84,7 @@ public class InsertMapActivity extends AppCompatActivity {
                 double lng = location.getLongitude();
 
                 logView.setText("longtitude=" + lng + ", latitude=" + lat+"\n"+"현재 위치: "+getAddress(lat,lng));
-                save_address = getAddress(lat,lng);
+                save_address = getAddress(lat,lng); // 한글주소를 저장한다.
 
                 if (check == 0) {
                     LatLng MyLocation = new LatLng(lat, lng);
@@ -95,7 +95,8 @@ public class InsertMapActivity extends AppCompatActivity {
                     map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
                     check = 1; // 처음 위치를 잡으면 check
                 } else if (check == 1) {
-                    ME.remove();
+                    ME.remove(); // 전에 찍힌 마크를 삭제한다.
+                                // -> 삭제되고 새로운 마크가 찍혀서 마크가 하나만 찍히게 한다.
                     LatLng MyLocation = new LatLng(lat, lng);
 
 
@@ -137,7 +138,7 @@ public class InsertMapActivity extends AppCompatActivity {
     }
 
 
-    private String getAddress(double lat, double lng) {
+    private String getAddress(double lat, double lng) { // 현재 위치의 좌표를 이용해 한글주소로 변경한다.
         Geocoder gcK = new Geocoder(getApplicationContext(), Locale.KOREA);
         String res = "정보없음";
         try {
