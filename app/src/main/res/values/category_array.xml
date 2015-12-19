@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>공부</item>
+        <item>독서</item>
+        <item>운동</item>
+        <item>먹기</item>
+        <item>근로</item>
+        <item>여행</item>
+        <item>문화</item>
+        <item>취미</item>
+        <item>쇼핑</item>
+        <item>기타</item>
+    </string-array>
+
+</resources>

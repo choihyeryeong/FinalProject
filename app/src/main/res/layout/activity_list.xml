@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Life Log"
+        android:id="@+id/textView2"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_weight="0.08"
+        android:background="#b2e1ea" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:id="@+id/tv_list"
+        android:layout_margin="10dp"
+        android:hint="do list"
+        android:padding="15dp"
+        android:layout_gravity="center" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.08"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="번호 선택"
+                android:inputType="number"
+                android:id="@+id/et_edit_index"
+                android:gravity="center"
+                android:layout_marginTop="5dp" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:hint="한 일 수정"
+                android:gravity="center"
+                android:id="@+id/et_edit_do"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/sp_categoty2"
+                android:prompt="@string/category2" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="수정"
+                android:id="@+id/bt_edit" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:hint="번호 선택"
+                android:inputType="number"
+                android:id="@+id/et_delete_index"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_span="3" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:text="삭제"
+                android:id="@+id/bt_delete"
+                android:layout_column="3" />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="메인으로"
+        android:id="@+id/bt_goMain"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.08"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp" />
+
+</LinearLayout>
